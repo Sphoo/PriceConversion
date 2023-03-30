@@ -20,7 +20,7 @@ service / on new http:Listener(9090) {
         log:printInfo("new conversion request", targetCur = target, amount = amount, baseCur = base);
 
         exchangerates:Client exchangeratesEp = check new ();
-        exchangerates:CurrencyExchangeInfomation getExchangeRateForResponse = check exchangeratesEp->getExchangeRateFor(apikey = exchangeRateAPIKey, baseCurrency = exchangeRateAPIKey);
+        exchangerates:CurrencyExchangeInfomation getExchangeRateForResponse = check exchangeratesEp->getExchangeRateFor(apikey = exchangeRateAPIKey, baseCurrency = base);
 
         decimal rate = <decimal>getExchangeRateForResponse.conversion_rates[target];
 
